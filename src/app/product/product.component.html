@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4" *ngFor="let p of products">
+            <div class="card">
+                <div class="card-header">
+                    <img [src]="p.productImg" height="200" width="200">
+                </div>
+                <div class="card-body">
+                    <div *ngIf="p.pedit">
+                        <input type="text" [(ngModel)]="p.productName">
+                        <input type="text" [(ngModel)]="p.productFeatures">
+                        <input type="text" name="" id="" [(ngModel)]="p.productprice">
+
+
+                    </div>
+                    <div *ngIf="!p.pedit">
+                        <h2>{{p.productName}}</h2>
+                        <p>{{p.productFeatures}}</p> 
+                        <h4>{{p.productPrice|currency:'INR'}}</h4>
+                    </div>
+
+                    <div class="card-footer">
+                
+                        <br><br>
+                        <button class="btn btn-warning">Add to cart</button>
+                        <button class="btn btn-success">Buy now</button>
+                       
+                        
+                    
+                       
+                            <button *ngIf="p.pedit" class="btn btn-primary" (click)="updatecon(p)">Update</button>
+                       
+                            <button   *ngIf="!p.edit" class="btn btn-info" (click)="editcon(p)"><i class="fa fa-edit"></i></button>
+                            
+                        
+                        
+                        
+                            <button class="btn btn-danger"(click)="deleteItem(p)"><i class="fa fa-trash-o"></i></button>
+                            
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
